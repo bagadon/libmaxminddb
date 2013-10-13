@@ -58,7 +58,7 @@
 
 #if !(MMDB_UINT128_IS_BYTE_ARRAY)
 #if MMDB_UINT128_USING_MODE
-typedef unsigned int mmdb_uint128_t __attribute__ ((__mode__ (TI)));
+typedef unsigned int mmdb_uint128_t __attribute__ ((__mode__(TI)));
 #else
 typedef unsigned __int128 mmdb_uint128_t;
 #endif

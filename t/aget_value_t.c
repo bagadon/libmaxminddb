@@ -18,7 +18,8 @@ void test_simple_structure(int mode, const char *mode_desc)
 
         cmp_ok(status, "==", MMDB_SUCCESS,
                "status for MMDB_aget_value() is MMDB_SUCCESS - array[0]");
-        ok(entry_data.has_data, "found a value with MMDB_aget_value - array[0]");
+        ok(entry_data.has_data,
+           "found a value with MMDB_aget_value - array[0]");
         cmp_ok(entry_data.type, "==", MMDB_DATA_TYPE_UINT32,
                "returned entry type is uint32 - array[0]");
         cmp_ok(entry_data.uint32, "==", 1, "entry value is 1 - array[0]");
@@ -31,7 +32,8 @@ void test_simple_structure(int mode, const char *mode_desc)
 
         cmp_ok(status, "==", MMDB_SUCCESS,
                "status for MMDB_aget_value() is MMDB_SUCCESS - array[2]");
-        ok(entry_data.has_data, "found a value with MMDB_aget_value - array[2]");
+        ok(entry_data.has_data,
+           "found a value with MMDB_aget_value - array[2]");
         cmp_ok(entry_data.type, "==", MMDB_DATA_TYPE_UINT32,
                "returned entry type is uint32 - array[2]");
         cmp_ok(entry_data.uint32, "==", 3, "entry value is 3 - array[2]");
@@ -54,7 +56,8 @@ void test_nested_structure(int mode, const char *mode_desc)
 
     {
         MMDB_entry_data_s entry_data;
-        char *lookup_path[] = { "map1", "map2", "array", "0", "map3", "a", NULL };
+        char *lookup_path[] =
+        { "map1", "map2", "array", "0", "map3", "a", NULL };
         int status = MMDB_aget_value(&result.entry, &entry_data, lookup_path);
 
         cmp_ok(
@@ -70,7 +73,8 @@ void test_nested_structure(int mode, const char *mode_desc)
 
     {
         MMDB_entry_data_s entry_data;
-        char *lookup_path[] = { "map1", "map2", "array", "0", "map3", "c", NULL };
+        char *lookup_path[] =
+        { "map1", "map2", "array", "0", "map3", "c", NULL };
         int status = MMDB_aget_value(&result.entry, &entry_data, lookup_path);
 
         cmp_ok(
