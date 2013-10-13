@@ -1,4 +1,3 @@
-#define _GNU_SOURCE
 #include "maxminddb_test_helper.h"
 
 #ifdef HAVE_OPEN_MEMSTREAM
