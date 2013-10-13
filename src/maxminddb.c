@@ -178,7 +178,6 @@ LOCAL char *bytes_to_hex(uint8_t *bytes, uint32_t size);
         }                                                         \
     } while (0)
 
-#if !defined HAVE_MEMMEM
 LOCAL void *memmem(const void *big, size_t big_len, const void *little,
                    size_t little_len)
 {
@@ -196,7 +195,6 @@ LOCAL void *memmem(const void *big, size_t big_len, const void *little,
     }
     return NULL;
 }
-#endif
 
 int MMDB_open(const char *filename, uint32_t flags, MMDB_s *mmdb)
 {
