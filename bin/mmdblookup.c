@@ -1,3 +1,6 @@
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "maxminddb.h"
 #include <assert.h>
 #include <errno.h>
