@@ -1573,8 +1573,7 @@ LOCAL MMDB_entry_data_list_s *dump_entry_data_list(
 #else
         uint64_t high = entry_data_list->entry_data.uint128 >> 64;
         uint64_t low = (uint64_t)entry_data_list->entry_data.uint128;
-        fprintf(stream, "0x%016" PRIX64 "%016" PRIX64 " <uint128>\n", high,
-                low);
+        fprintf(stream, "0x%016" PRIX64 "%016" PRIX64 " <uint128>\n", high, low);
 #endif
         entry_data_list = entry_data_list->next;
         break;
