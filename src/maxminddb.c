@@ -3,7 +3,6 @@
 #include <fcntl.h>
 #include <inttypes.h>
 #include <stdlib.h>
-#include <string.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -180,26 +179,6 @@ LOCAL char *bytes_to_hex(uint8_t *bytes, uint32_t size);
             return status;                                        \
         }                                                         \
     } while (0)
-
-#if !defined HAVE_MEMMEM
-LOCAL void *memmem(const void *big, size_t big_len, const void *little,
-                   size_t little_len)
-{
-    if (little_len) {
-        int first_char = ((uint8_t *)little)[0];
-        const void *ptr = big;
-        size_t len = big_len;
-        while (len >= little_len
-               && (ptr = memchr(ptr, first_char, len - little_len + 1))) {
-            if (!memcmp(ptr, little, little_len)) {
-                return (void *)ptr;
-            }
-            len = big_len - (++ptr - big);
-        }
-    }
-    return NULL;
-}
-#endif
 
 int MMDB_open(const char *filename, uint32_t flags, MMDB_s *mmdb)
 {

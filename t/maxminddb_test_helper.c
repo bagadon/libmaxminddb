@@ -1,36 +1,9 @@
-#define _POSIX_C_SOURCE 200112L
+#include "maxminddb_test_helper.h"
 #include <assert.h>
 #include <libgen.h>
-#include <netdb.h>
-#include <stdarg.h>
-#include <sys/socket.h>
-#include <sys/types.h>
 #include <unistd.h>
-#include "maxminddb.h"
-#include "maxminddb_test_helper.h"
 
 #define NO_PROTO
-
-#ifndef strndup
-/* *INDENT-OFF* */
-/* Copied from the libiberty strndup.c, which is LPGPL 2+ */
-NO_PROTO char *strndup (const char *s, size_t n)
-{
-  char *result;
-  size_t len = strlen (s);
-
-  if (n < len)
-    len = n;
-
-  result = (char *) malloc (len + 1);
-  if (!result)
-    return 0;
-
-  result[len] = '\0';
-  return (char *) memcpy (result, s, len);
-}
-/* *INDENT-ON* */
-#endif
 
 void for_all_record_sizes(const char *filename_fmt,
                           void (*tests)(int record_size, const char *filename,

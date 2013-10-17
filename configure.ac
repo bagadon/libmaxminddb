@@ -83,7 +83,7 @@ AC_CHECK_FUNC(
 
 AC_FUNC_MALLOC
 AC_FUNC_MMAP
-AC_CHECK_FUNCS([memmem])
+AC_CHECK_FUNCS([memmem strdup strndup])
 
 AC_SEARCH_LIBS([fabs], [m])
 AC_SEARCH_LIBS([fabsf], [m])

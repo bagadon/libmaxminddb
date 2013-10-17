@@ -1,12 +1,14 @@
 #ifndef MAXMINDDB_H
 #define MAXMINDDB_H
 
-#ifndef _POSIX_C_SOURCE
-#define _POSIX_C_SOURCE 200112L
-#endif
-
-#ifndef _GNU_SOURCE
 #define _GNU_SOURCE
+
+/* If we're not on a _GNU_SOURCE platform this should at least get us the most
+ * recent POSIX extensions available. Our code will fail to compile without
+ * POSIX >= 200112 because we need things not provided by bare C99 like
+ * AI_NUMERICHOST */
+#if !defined _POSIX_C_SOURCE
+#define _POSIX_C_SOURCE 200809L
 #endif
 
 #if HAVE_CONFIG_H
@@ -19,8 +21,11 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include "fallbacks.h"
 
 #define MMDB_DATA_TYPE_EXTENDED (0)
 #define MMDB_DATA_TYPE_POINTER (1)
